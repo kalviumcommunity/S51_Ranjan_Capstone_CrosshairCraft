@@ -33,4 +33,4 @@ CrosshairCraft is designed to work with a variety of popular FPS games. However,
 
 Use CrosshairCraft responsibly and in accordance with the terms of service of your FPS game. We are not responsible for any consequences resulting from the misuse of this tool.
 
-Enjoy customizing your crosshair and enhancing your gaming experience with CrosshairCraft!
+
