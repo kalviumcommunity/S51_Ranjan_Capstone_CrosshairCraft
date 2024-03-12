@@ -1,0 +1,22 @@
+{
+  "name": "s51_ranjan_capstone_crosshaircraft",
+  "version": "1.0.0",
+  "description": "Welcome to CrosshairCraft, the ultimate crosshair generator for FPS enthusiasts. This tool empowers you to design and customize your crosshair, offering a personalized aiming experience tailored to your preferences. Whether you're a seasoned gamer or a casual player, CrosshairCraft makes it easy to elevate your aiming precision with style.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3",
+    "mongoose": "^8.2.1",
+    "node": "^21.7.1",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
