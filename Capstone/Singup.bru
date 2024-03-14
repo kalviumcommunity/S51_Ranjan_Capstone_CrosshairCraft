@@ -1,0 +1,20 @@
+meta {
+  name: Singup
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/signuppage
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name":"Ranjan",
+    "email":"ranjan.m1325@gmail.com",
+    "username":"Ranjan",
+    "password":"12345678"
+  }
+}
