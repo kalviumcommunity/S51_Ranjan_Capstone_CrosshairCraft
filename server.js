@@ -1,16 +1,14 @@
 const express = require('express');
 const {startDatabase,isConnected} = require( './db' );
 require('dotenv').config()
+const {signUpRouter, LoginRouter} = require('./Routes/routes')
 
 const app = express();
 const port = 3000;
 
-// if (require.main === module) {
-//   app.listen(port, () => {
-//     console.log(`🚀 testing Full Stack Magic Unleashed! Server conquering PORT: 💻✨ ${port}`);
-//   });
-// }
-
+app.use(express.json()); 
+app.use('/',signUpRouter)
+app.use('/',LoginRouter)
 
 app.get('/', (req, res) => {
   res.json({
