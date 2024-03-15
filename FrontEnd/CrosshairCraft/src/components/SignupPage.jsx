@@ -30,7 +30,7 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/signuppage', {
+            const response = await axios.post('https://s51-ranjan-capstone-crosshaircraft.onrender.com/signuppage', {
                 name,
                 username,
                 email,
