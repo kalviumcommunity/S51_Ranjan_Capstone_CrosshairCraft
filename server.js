@@ -2,10 +2,12 @@ const express = require('express');
 const {startDatabase,isConnected} = require( './db' );
 require('dotenv').config()
 const {signUpRouter, LoginRouter} = require('./Routes/routes')
+const cors  = require( 'cors' )
 
 const app = express();
 const port = 3000;
 
+app.use(cors())
 app.use(express.json()); 
 app.use('/',signUpRouter)
 app.use('/',LoginRouter)

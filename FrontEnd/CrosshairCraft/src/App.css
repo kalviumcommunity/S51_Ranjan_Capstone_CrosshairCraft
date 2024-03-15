@@ -1,42 +1,152 @@
-#root {
-  max-width: 1280px;
+*{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Login Page */
+
+.login-container {
+  max-width: 400px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 20px;
+  border: 3px solid red;
+  border-radius: 5px;
+  background-color: white;
+  transition: transform 0.3s ease;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.form-group {
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.inputText,
+.inputpassword {
+  width: 70%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
 }
 
-.card {
-  padding: 2em;
+.inputText:focus,
+.inputpassword:focus {
+  outline: none;
+  border-color: #ccc;
 }
 
-.read-the-docs {
-  color: #888;
+.buttonsubmit {
+  display: block;
+  width: 40%;
+  padding: 10px;
+  background-color: red;
+  border: 2px solid black;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttonsubmit:hover {
+  background-color: black;
+
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: opacity 0.3s ease ;
+}
+
+.error-message.show {
+  opacity: 1;
+}
+
+.error-message.hide {
+  opacity: 0;
+}
+
+/* Signup Page */
+
+
+.signup-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 3px solid red;
+  border-radius: 5px;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.inputText,
+.inputpassword {
+  width: 70%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.inputText:focus,
+.inputpassword:focus {
+  outline: none;
+  border-color: #ccc;
+}
+
+.button-submit {
+  display: block;
+  width: 40%;
+  border: 2px solid black;
+  padding: 10px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-submit:hover {
+  background-color: black;
+  
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.error-message.show {
+  opacity: 1;
+}
+
+.error-message.hide {
+  opacity: 0;
 }
