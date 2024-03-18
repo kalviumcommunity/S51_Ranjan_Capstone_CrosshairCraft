@@ -1,10 +1,8 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import NavBar  from './NavBar'
-import './../App.css' 
+import React from 'react';
+import { useEffect , useState } from 'react';
+import './../App.css';
 
-function Home() {
+function NavBar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     useEffect(()=>{
         checkLoginStatus()},[])
@@ -22,18 +20,28 @@ function Home() {
         const parts = value.split(`; ${name}=`);
         if (parts.length === 2) return parts.pop().split(';').shift();
     };
-    return (
-        <>
-            
-            {/* {isLoggedIn ? (
+  return (
+    <nav>
+      <div className='navbar'>
+        <div className="left-content">
+          <h1>Crosshair Craft</h1>
+        </div>
+        <div className="right-content">
+          <a href="/">Home</a>
+          <a href="https://github.com/kalviumcommunity/S51_Ranjan_Capstone_CrosshairCraft">About Us</a>
+          {isLoggedIn ? (
                     <button className="logout" onClick={handleLogout}>LOGOUT</button>
                 ) : (
                     <>
-                    <Link to='/loginpage'><button className="button">LOGIN</button></Link>
-                    <Link to='/signuppage'><button className="button">SIGNUP</button></Link>
+                        <a href="/loginpage">Login</a>
+                        <a href="/signuppage">Signup</a>
                     </>
-            )} */}
-        </>
-    )
+            )}
+          
+        </div>
+      </div>
+    </nav>
+  );
 }
-export default Home
+
+export default NavBar;
