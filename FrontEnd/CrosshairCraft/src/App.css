@@ -1,5 +1,8 @@
 *{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+
 }
 
 /* Login Page */
@@ -149,4 +152,35 @@
 
 .error-message.hide {
   opacity: 0;
+}
+
+/* NavBar */ 
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+   background-color:black;
+   padding: 10px;
+}
+
+.navbar a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar h1 {
+  margin-left: 5px;
+  color: white;
+}
+
+.left-content {
+  display: flex;
+  align-items: center;
+}
+
+.right-content {
+  display: flex;
+  align-items: center;
 }
