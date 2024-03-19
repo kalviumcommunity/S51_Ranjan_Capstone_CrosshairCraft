@@ -160,8 +160,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-   background-color:black;
-   padding: 10px;
+  background-color:black;
+  padding: 10px;
 }
 
 .navbar a {
@@ -183,4 +183,151 @@
 .right-content {
   display: flex;
   align-items: center;
+}
+
+
+/* Logout */
+
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  margin-left: 15px; 
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+}
+
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: white;
+}
+/* text */
+.text {
+  position: absolute;
+  left: 50%; /* Change right: 0% to left: 50% */
+  transform: translateX(-25%); /* Center the text horizontally */
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+/* hover effect on button width */
+.Btn:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+/* hover effect button's text */
+.Btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px ,2px);
+}
+
+
+
+
+
+
+
+/* Login button */
+.btn-2 {
+  --color: #ffcd39;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .5s;
+  border: none;
+  background-color: transparent;
+  margin-right: 5px; /* Add margin-right to create space between buttons */
+}
+
+.btn-2 div {
+  letter-spacing: 1px;
+  font-weight: bold;
+  background: var(--color);
+  border-radius: 1rem;
+  color: black; /* Change text color to black */
+  padding: 0.6rem 1.2rem; /* Match the padding of the Sign up button */
+  font-size: 0.8rem; /* Match the font size of the Sign up button */
+}
+
+.btn-2::before {
+  content: '';
+  z-index: -1;
+  background-color: var(--color);
+  /* Remove white border */
+  border-radius: 1rem;
+  width: 110%;
+  height: 100%;
+  position: absolute;
+  transform: rotate(10deg);
+  transition: .5s;
+  opacity: 0.2;
+}
+
+.btn-2:hover {
+  cursor: pointer;
+  filter: brightness(1.2);
+  transform: scale(1.1);
+}
+
+.btn-2:hover::before {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+.btn-2 svg path {
+  stroke: black; /* Change the color of the arrow to black */
+}
+
+.btn-2 svg {
+  transform: translateX(-200%);
+  transition: .5s;
+  width: 0;
+  opacity: 0;
+}
+
+.btn-2:hover svg {
+  width: 18px;
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.btn-2:active {
+  filter: brightness(1.4);
 }
