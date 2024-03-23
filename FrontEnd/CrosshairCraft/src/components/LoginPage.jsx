@@ -45,15 +45,15 @@ function Login() {
 
     return (
         <div className="login-container">
-            <h2 className='h2'>Login</h2>
+            <h2 className='h2'>Login</h2><br />
             {error && <p className="error-message">{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label className='label' htmlFor="username">Username:</label>
-                    <input type="text" className='inputText' id="username" value={username} onChange={handleUsernameChange} required />
+                    <label className='label' htmlFor="username">Username </label>
+                    <input  type="text" className='inputText' id="username" value={username} onChange={handleUsernameChange} required />
                 </div>
                 <div className="form-group">
-                    <label className='label' htmlFor="password">Password:</label>
+                    <label className='label' htmlFor="password">Password </label>
                     <input type="password" id="password" className='inputpassword' value={password} onChange={handlePasswordChange} required />
                 </div>
                 <button className='buttonsubmit' type="submit">Login</button>
