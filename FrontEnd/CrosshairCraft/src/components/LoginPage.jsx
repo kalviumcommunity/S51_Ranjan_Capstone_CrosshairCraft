@@ -32,6 +32,7 @@ function Login() {
                 console.log(response.data);
                 document.cookie = `token=${token}; path=/;`;
                 navigate('/');
+                window.location.reload();
             } else {
                 const errorData = response.data;
                 navigate('/');
