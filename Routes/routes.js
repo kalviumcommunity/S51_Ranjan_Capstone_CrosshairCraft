@@ -1,9 +1,11 @@
 const express = require('express')
 const User = require('../models/user.model')
+const crosshair = require('../models/Crosshair.model')
 const bcrypt = require('bcrypt')
 
 const signUpRouter = express.Router()
 const LoginRouter = express.Router()
+const crosshairRouter = express.Router()
 
 signUpRouter.post("/signuppage",async (req, res) =>{
     try{
@@ -51,4 +53,30 @@ LoginRouter.post('/loginpage',async (req, res) => {
     
 })
 
-module.exports = {signUpRouter, LoginRouter}
+crosshairRouter.post("/add",   async (req, res) => {
+    try {
+        const { CrosshairID, Type, Color,Game, CreatedBy } = req.body;
+
+        // ValiType request body
+        if (!CrosshairID || !Type || !Color ||  !CreatedBy) {
+            return res.status(400).json({ message: "Please provide all required fields" });
+        }
+        
+        // Create new crosshair with user ID
+        const newcrosshair = await crosshair.create({
+            CrosshairID,
+            Type,
+            Color,
+            Game,
+            CreatedBy,
+
+        });
+
+        return res.status(200).json({ message: "crosshair added successfully", crosshair: newcrosshair });
+    } catch (err) {
+        return res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+
+module.exports = {signUpRouter, LoginRouter,crosshairRouter}
