@@ -14,4 +14,4 @@ const CrosshairSchema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model("crosshair", CrosshairSchema);
+module.exports = mongoose.model("crosshairs", CrosshairSchema);

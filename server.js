@@ -1,7 +1,7 @@
 const express = require('express');
 const {startDatabase,isConnected} = require( './db' );
 require('dotenv').config()
-const {signUpRouter, LoginRouter, crosshairRouter} = require('./Routes/routes')
+const {signUpRouter, LoginRouter, crosshairRouter, updatecrosshair , deletecrosshair} = require('./Routes/routes')
 const cors  = require( 'cors' )
 
 const app = express();
@@ -12,6 +12,9 @@ app.use(express.json());
 app.use('/',signUpRouter)
 app.use('/',LoginRouter)
 app.use('/',crosshairRouter)
+app.use('/',updatecrosshair)
+app.use('/',deletecrosshair)
+
 
 app.get('/', (req, res) => {
   res.json({

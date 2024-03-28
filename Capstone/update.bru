@@ -1,19 +1,19 @@
 meta {
-  name: Post
+  name: update
   type: http
-  seq: 5
+  seq: 6
 }
 
-post {
-  url: http://localhost:3000/add
+patch {
+  url: http://localhost:3000/patch/1
   body: json
   auth: none
 }
 
 body:json {
   {
-    "CrosshairID": 2,
-    "Color": "Red",
+    "CrosshairID": 1,
+    "Color": "Black",
     "Type": "Dot",
     "Game": "Counter-Strike: Global Offensive",
     "CreatedBy": "Madasfury"
