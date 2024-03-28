@@ -6,6 +6,8 @@ const bcrypt = require('bcrypt')
 const signUpRouter = express.Router()
 const LoginRouter = express.Router()
 const crosshairRouter = express.Router()
+const updatecrosshair = express.Router()
+const deletecrosshair = express.Router()
 
 signUpRouter.post("/signuppage",async (req, res) =>{
     try{
@@ -78,5 +80,37 @@ crosshairRouter.post("/add",   async (req, res) => {
     }
 });
 
+// Updating crosshairs
+updatecrosshair.patch("/patch/:id", async (req, res) => {
+    try {
+        const { id } = req.params
+        const updated = req.body
+        const updatedcrosshair = await crosshair.findOneAndUpdate({ CrosshairID: id }, updated, { new: true });
+        if (!updatedcrosshair) {
+            return res.status(404).json({ error: 'crosshair not found' });
+        }
+        res.status(200).json(updatedcrosshair);
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ error: "Internal server error" })
+    }
+})
 
-module.exports = {signUpRouter, LoginRouter,crosshairRouter}
+// Deleting a Crosshair
+deletecrosshair.delete('/delete/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const deletecrosshair = await crosshair.findOneAndDelete({ CrosshairID: id })
+        if (!deletecrosshair) {
+            return res.status(404).json({ error: 'Crosshair not found' });
+        }
+        res.status(200).json(deletecrosshair);
+    } catch(err){
+        console.error(err);
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+
+
+})
+
+module.exports = {signUpRouter, LoginRouter,crosshairRouter,updatecrosshair,deletecrosshair}
