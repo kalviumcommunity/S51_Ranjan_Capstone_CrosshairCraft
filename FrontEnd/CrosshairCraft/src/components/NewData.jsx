@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./../App.css";
 
-export default function NewData() {
+function NewData() {
   const [CrosshairID, setCrosshairID] = useState("");
   const [Color, setColor] = useState("");
   const [Type, setType] = useState("");
@@ -14,7 +14,7 @@ export default function NewData() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https//s51-ranjan-capstone-crosshaircraft.onrender.com/add", {
+      .post("https://s51-ranjan-capstone-crosshaircraft.onrender.com/add", {
         CrosshairID,
         Color,
         Type,
@@ -23,6 +23,9 @@ export default function NewData() {
       })
       .then((res) => {
         console.log(res);
+        // Show success message
+        alert("Data added successfully!");
+        // Navigate back to home page
         navigate("/");
       })
       .catch((err) => console.log(err));
@@ -30,7 +33,8 @@ export default function NewData() {
 
   return (
     <div className="form-container">
-      <h2>New Crosshair Data</h2><br />
+      <h2>New Crosshair Data</h2>
+      <br />
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="CrosshairID">Crosshair ID</label>
@@ -89,3 +93,5 @@ export default function NewData() {
     </div>
   );
 }
+
+export default NewData;
