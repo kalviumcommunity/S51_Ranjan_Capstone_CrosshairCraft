@@ -22,6 +22,7 @@
     "node": "^21.7.1",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
+    "process": "^0.11.10",
     "react": "^18.2.0"
   },
   "devDependencies": {
