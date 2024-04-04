@@ -2,8 +2,7 @@ import  { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-import dotenv from "dotenv";
-dotenv.config(); // Load environment variables
+
 
 import "./../App.css";
 
@@ -66,7 +65,8 @@ function Login() {
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
-      client_id: process.env.REACT_APP_CLINET_ID,
+      client_id:
+        "126122565431-llvcdl9k4tciko83pr3uu8n46chgc5la.apps.googleusercontent.com",
       callback: handleCallbackResponse,
     });
 
