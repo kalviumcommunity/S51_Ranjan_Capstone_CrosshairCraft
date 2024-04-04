@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
@@ -66,7 +66,7 @@ function Login() {
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
-      client_id: process.env.CLIENT_ID,
+      client_id: process.env.REACT_APP_CLINET_ID,
       callback: handleCallbackResponse,
     });
 
