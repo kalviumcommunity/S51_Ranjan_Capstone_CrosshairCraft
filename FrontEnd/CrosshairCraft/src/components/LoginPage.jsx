@@ -112,12 +112,11 @@ function Login() {
             <button className="buttonsubmit" type="submit">
             Login
             </button>
-
+            <h6>(or)</h6>
             <div id="signinbtn"></div>
         </div>
         
       </form>
-      
       <span> Don't have an account? </span>
       <Link to="/signuppage">SIGN UP</Link>
     </div>
