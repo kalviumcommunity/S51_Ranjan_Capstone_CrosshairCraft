@@ -1,7 +1,9 @@
-import  { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import dotenv from "dotenv";
+dotenv.config(); // Load environment variables
 
 import "./../App.css";
 
@@ -64,8 +66,7 @@ function Login() {
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
-      client_id:
-        "126122565431-llvcdl9k4tciko83pr3uu8n46chgc5la.apps.googleusercontent.com",
+      client_id: process.env.CLIENT_ID,
       callback: handleCallbackResponse,
     });
 
@@ -109,13 +110,12 @@ function Login() {
         </div>
 
         <div className="cred">
-            <button className="buttonsubmit" type="submit">
+          <button className="buttonsubmit" type="submit">
             Login
-            </button>
-            <h6>(or)</h6>
-            <div id="signinbtn"></div>
+          </button>
+          <h6>(or)</h6>
+          <div id="signinbtn"></div>
         </div>
-        
       </form>
       <span> Dont have an account? </span>
       <Link to="/signuppage">SIGN UP</Link>
