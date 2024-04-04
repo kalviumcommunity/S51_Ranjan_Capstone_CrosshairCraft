@@ -117,7 +117,7 @@ function Login() {
         </div>
         
       </form>
-      <span> Don't have an account? </span>
+      <span> Dont have an account? </span>
       <Link to="/signuppage">SIGN UP</Link>
     </div>
   );
