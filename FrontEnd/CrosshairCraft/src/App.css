@@ -437,3 +437,13 @@ label {
   width: 150px;
   padding: 5px;
 }
+
+/* google signin option  */
+
+.cred{
+  display: flex;
+  padding: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
