@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import {PulseLoader} from 'react-spinners' 
+import Footer from './Footer'
 
 import './../App.css' 
 
@@ -33,6 +34,7 @@ function Home() {
             <div className='ontheway'>
                 <PulseLoader/>    
             </div>
+            <Footer/>
             
         </>
     )
