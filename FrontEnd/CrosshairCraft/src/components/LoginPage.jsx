@@ -1,7 +1,7 @@
 import  { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
+// import { jwtDecode } from "jwt-decode";
 
 
 import "./../App.css";
@@ -12,7 +12,7 @@ function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const my_id = "126122565431-llvcdl9k4tciko83pr3uu8n46chgc5la.apps.googleusercontent.com";
+  
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -54,29 +54,30 @@ function Login() {
     }
   };
 
-  function handleCallbackResponse(response) {
-    console.log("jwt:::", response.credential);
-    const userObject = jwtDecode(response.credential);
-    console.log(userObject);
+  // function handleCallbackResponse(response) {
+  //   console.log("jwt:::", response.credential);
+  //   const userObject = jwtDecode(response.credential);
+  //   console.log(userObject);
 
-    // Redirect to home page
-    navigate("/");
-  }
+  //   // Redirect to home page
+  //   navigate("/");
+  // }
 
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize({
-      client_id: process.env.REACT_APP_CLINET_ID,
-      callback: handleCallbackResponse,
-    });
+  // useEffect(() => {
+  //   /* global google */
+  //   google.accounts.id.initialize({
+  //     client_id: process.env.REACT_APP_CLINET_ID,
+  //     callback: handleCallbackResponse,
+  //   });
 
 
-    google.accounts.id.renderButton(document.getElementById("signinbtn"), {
-      theme: "outline",
-      size: "large",
-    });
-  });
-  console.log(import.meta.env.VITE_CLIENT_ID)
+  //   google.accounts.id.renderButton(document.getElementById("signinbtn"), {
+  //     theme: "outline",
+  //     size: "large",
+  //   });
+  // });
+  
+  // console.log(import.meta.env.VITE_CLIENT_ID)
 
   return (
     <div className="login-container">
