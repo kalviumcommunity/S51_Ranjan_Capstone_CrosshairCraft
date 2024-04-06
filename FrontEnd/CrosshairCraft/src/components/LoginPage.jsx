@@ -59,7 +59,7 @@ function Login() {
     const userObject = jwtDecode(response.credential);
     console.log(userObject);
 
-    // Redirect to home page after logged in 
+    // Redirect to home page
     navigate("/");
   }
 
