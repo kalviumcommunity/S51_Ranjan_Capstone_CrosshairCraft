@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import "./../App.css";
+import NavBar from "./NavBar";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -60,7 +61,8 @@ function Login() {
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
-      client_id: "126122565431-llvcdl9k4tciko83pr3uu8n46chgc5la.apps.googleusercontent.com",
+      client_id:
+        "126122565431-llvcdl9k4tciko83pr3uu8n46chgc5la.apps.googleusercontent.com",
       callback: handleCallbackResponse,
     });
 
@@ -71,57 +73,62 @@ function Login() {
   });
 
   return (
-    <div className="login-page">
-      <div className="left-side">
-        <h1 className="greeting">Welcome Back!</h1><br />
-        <p className="greeting-text">Login to your account to  Enter the realm and continue your journey. Adventure awaits! </p><br />
-        
-          
-        
-      </div>
-      <div className="right-side">
-        <div className="login-container">
-          <h2 className="h2">Login</h2>
-          {error && <p className="error-message">{error}</p>}
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label className="label" htmlFor="username">
-                Username
-              </label>
-              <input
-                type="text"
-                className="inputText"
-                id="username"
-                value={username}
-                onChange={handleUsernameChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label className="label" htmlFor="password">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                className="inputpassword"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-              />
-            </div>
-            <div className="cred">
-              <button className="buttonsubmit" type="submit">
-                Login
-              </button>
-              <div id="signinbtn"></div>
-            </div>
-          </form>
-          <span>Dont have an account?</span>
-          <Link to="/signuppage">Sign Up</Link>
+    <>
+      <NavBar />
+      <div className="login-page">
+        <div className="left-side">
+          <h1 className="greeting">Welcome Back!</h1>
+          <br />
+          <p className="greeting-text">
+            Login to your account to Enter the realm and continue your journey.
+            Adventure awaits!{" "}
+          </p>
+          <br />
+        </div>
+        <div className="right-side">
+          <div className="login-container">
+            <h2 className="h2">Login</h2>
+            {error && <p className="error-message">{error}</p>}
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label className="label" htmlFor="username">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  className="inputText"
+                  id="username"
+                  value={username}
+                  onChange={handleUsernameChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label className="label" htmlFor="password">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  className="inputpassword"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  required
+                />
+              </div>
+              <div className="cred">
+                <button className="buttonsubmit" type="submit">
+                  Login
+                </button>
+                <div id="signinbtn"></div>
+              </div>
+            </form>
+            <span>Dont have an account?</span>
+            <Link to="/signuppage">Sign Up</Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
