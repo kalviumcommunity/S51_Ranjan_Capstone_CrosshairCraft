@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
+
 import "./../App.css";
+import {Link} from "react-router-dom"
 
 function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,9 +29,8 @@ function NavBar() {
         <div className="left-content">
           
           <a href="/">Home</a>
-          <a href="https://github.com/kalviumcommunity/S51_Ranjan_Capstone_CrosshairCraft">
-            About Us
-          </a>
+          <Link to="/about">About Us</Link>
+          
         </div>
         <h1>Crosshair Craft</h1>
         <div className="right-content">
