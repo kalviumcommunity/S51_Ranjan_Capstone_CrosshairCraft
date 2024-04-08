@@ -2,6 +2,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 
 }
 
@@ -21,48 +22,78 @@
   align-items: center;
 }
 
-
-
-
 /* Login Page */
 
+.login-page {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  height: 94vh;
+}
+
+.left-side {
+  width: calc(58%);
+  height: 100.5vh;
+  /* padding: 20px; */
+  background-color: #ffcd39;
+  
+  
+}
+
+.greeting {
+  font-size: 24px;
+  color: black;
+  margin-top: 300px;
+  /* margin-left: 300px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+}
+
+
+
+.greeting-text {
+  font-size: 18px;
+  color: black;
+  margin-left: 10px;
+  
+}
+
+.right-side {
+  /* height: 100vh; */
+  width: 50%;
+}
+
 .login-container {
-  max-width: 450px;
+  max-width: 400px;
   margin: 0 auto;
-  margin-top: 20vh;
   padding: 20px;
   border-radius: 10px;
-  background-color:#ffcd39;
-  transition: transform 0.3s ease;
+  background-color: #f0f0f0;
+}
+
+.h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .form-group {
   margin-bottom: 20px;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-
-}
-
-.form-group2 {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
 }
 
 .label {
-  display: block;
   font-weight: bold;
-  margin-bottom: 5px;
-  color: black;
+  color: #333;
 }
 
 .inputText,
 .inputpassword {
-  width: 70%;
+  width: 100%;
   padding: 10px;
-  border: 2px solid black;
+  border: 2px solid #ccc;
   border-radius: 5px;
   transition: border-color 0.3s ease;
 }
@@ -70,46 +101,42 @@
 .inputText:focus,
 .inputpassword:focus {
   outline: none;
-  border-color: #ccc;
+  border-color: #666;
 }
-
-
 
 .buttonsubmit {
   display: block;
-  width: 40%;
+  width: 100%;
   padding: 10px;
-  background-color: red;
-  border: 2px solid black;
-  color: #fff;
+  background-color: black;
   border: none;
   border-radius: 5px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 15px;
+  color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .buttonsubmit:hover {
-  background-color: black;
-
+  background-color:#333;
 }
 
 .error-message {
   color: red;
   font-size: 14px;
-  margin-top: 10px;
-  transition: opacity 0.3s ease ;
+  margin-bottom: 15px;
 }
 
-.error-message.show {
-  opacity: 1;
+.cred {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.error-message.hide {
-  opacity: 0;
+#signinbtn {
+  margin-left: 10px;
 }
+
+
 
 /* Signup Page */
 
@@ -195,7 +222,7 @@
   background-color:black;
   padding: 10px;
   z-index: 1000;
-  width: 98%;
+  width: 100%;
   position: fixed;
 }
 
@@ -474,14 +501,14 @@ label {
 }
 
 .footer a {
-  display: inline-block; /* Display links inline */
-  margin: 0 10px; /* Add some spacing between links */
+  display: inline-block; 
+  margin: 0 10px; 
 }
 
 .footer a img {
   width: 30px;
   height: 30px;
-  border-radius: 50%; /* Make images circular */
+  border-radius: 50%; 
 }
 
 .footer a:hover {

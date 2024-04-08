@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
@@ -10,7 +10,6 @@ function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -19,37 +18,33 @@ function Login() {
     setPassword(e.target.value);
   };
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const header = new Headers({
+      const header = {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "*",
-      });
+      };
       const response = await axios.post(
         "https://s51-ranjan-capstone-crosshaircraft.onrender.com/loginpage",
         {
-          headers: header,
-          mode: "no-cors",
           username,
           password,
+        },
+        {
+          headers: header,
+          mode: "no-cors",
         }
       );
       if (response.status === 200) {
         const { token } = response.data;
-        console.log(response.data);
         document.cookie = `token=${token}; path=/;`;
         navigate("/");
         window.location.reload();
-      } else {
-        const errorData = response.data;
-        navigate("/");
-        setError(errorData.error);
       }
     } catch (error) {
       console.error("Error logging in:", error);
-      setError("Something went wrong!");
+      setError("Invalid username or password");
     }
   };
 
@@ -69,57 +64,63 @@ function Login() {
       callback: handleCallbackResponse,
     });
 
-
     google.accounts.id.renderButton(document.getElementById("signinbtn"), {
       theme: "outline",
       size: "large",
     });
   });
-  
-  console.log(import.meta.env.VITE_CLIENT_ID)
 
   return (
-    <div className="login-container">
-      <h2 className="h2">Login</h2>
-      <br />
-      {error && <p className="error-message">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label className="label" htmlFor="username">
-            Username{" "}
-          </label>
-          <input
-            type="text"
-            className="inputText"
-            id="username"
-            value={username}
-            onChange={handleUsernameChange}
-            required
-          />
+    <div className="login-page">
+      <div className="left-side">
+        <h1 className="greeting">Welcome Back!</h1><br />
+        <p className="greeting-text">Login to your account to  Enter the realm and continue your journey. Adventure awaits! </p><br />
+        
+          
+        
+      </div>
+      <div className="right-side">
+        <div className="login-container">
+          <h2 className="h2">Login</h2>
+          {error && <p className="error-message">{error}</p>}
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label className="label" htmlFor="username">
+                Username
+              </label>
+              <input
+                type="text"
+                className="inputText"
+                id="username"
+                value={username}
+                onChange={handleUsernameChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="label" htmlFor="password">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                className="inputpassword"
+                value={password}
+                onChange={handlePasswordChange}
+                required
+              />
+            </div>
+            <div className="cred">
+              <button className="buttonsubmit" type="submit">
+                Login
+              </button>
+              <div id="signinbtn"></div>
+            </div>
+          </form>
+          <span>Dont have an account?</span>
+          <Link to="/signuppage">Sign Up</Link>
         </div>
-        <div className="form-group">
-          <label className="label" htmlFor="password">
-            Password{" "}
-          </label>
-          <input
-            type="password"
-            id="password"
-            className="inputpassword"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
-        </div>
-
-        <div className="cred">
-          <button className="buttonsubmit" type="submit">
-            Login
-          </button>
-          <div id="signinbtn"></div>
-        </div>
-      </form>
-      <span> Dont have an account? </span>
-      <Link to="/signuppage">SIGN UP</Link>
+      </div>
     </div>
   );
 }
