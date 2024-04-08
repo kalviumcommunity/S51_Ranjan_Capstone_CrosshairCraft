@@ -6,11 +6,58 @@
 
 }
 
-/* About US  */
 
-.about-us{
+
+/* AboutUs.css */
+
+.about-us {
+  max-width: 800px;
+  margin: 0 auto;
   margin-top: 100px;
+  padding: 20px;
 }
+
+.about-us h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-us h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.about-us p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.about-us ul {
+  margin-bottom: 15px;
+  margin-left: 40px;
+}
+
+.about-us ul li {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.about-us a {
+  display: inline-block;
+  font-size: 16px;
+  color: blue;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.about-us a:hover {
+  text-decoration: underline;
+}
+
 
 /* Home Page  */
 
