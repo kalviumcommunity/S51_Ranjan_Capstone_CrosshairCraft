@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect,setToken } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import {ToastContainer,toast} from 'react-toastify'
 import "./../App.css";
 import NavBar from "./NavBar";
+
+
+import "react-toastify/dist/ReactToastify.css"
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -20,6 +24,7 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
+    console.log(username,password)
     e.preventDefault();
     try {
       const header = {
@@ -29,8 +34,8 @@ function Login() {
       const response = await axios.post(
         "https://s51-ranjan-capstone-crosshaircraft.onrender.com/loginpage",
         {
-          username,
-          password,
+          "username" :username,
+          "password": password,
         },
         {
           headers: header,
@@ -49,21 +54,44 @@ function Login() {
     }
   };
 
-  function handleCallbackResponse(response) {
-    console.log("jwt:::", response.credential);
-    const userObject = jwtDecode(response.credential);
-    console.log(userObject);
-
-    // Redirect to home page
-    navigate("/");
+  function setCookie(name, value, expiresInDays) {
+    const date = new Date();
+    date.setTime(date.getTime() + (expiresInDays * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + "; " + expires + "; path=/";
   }
+
+  async function  handleGoogleResponse(response){
+    const userObject = jwtDecode(response.credential)
+    console.log(userObject)
+    try {
+      const response = await axios.post('http://localhost:3000/googlelogin', {
+        email: userObject.email,
+        name : userObject.name,
+      })
+  
+      // setToken( response.data.encryptedToken);
+      setCookie("token",response.user,10)
+
+    } catch (error) {
+      // toast.error(error.response.message, {
+      //   position: 'top-right',
+      //   autoClose: 5000
+      // })
+      console.error('Error logging in:', error);
+
+    }
+    navigate('/')
+    
+}
 
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
       client_id:
         "126122565431-llvcdl9k4tciko83pr3uu8n46chgc5la.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
+      callback: handleGoogleResponse,
+      
     });
 
     google.accounts.id.renderButton(document.getElementById("signinbtn"), {
@@ -127,6 +155,7 @@ function Login() {
             <Link to="/signuppage">Sign Up</Link>
           </div>
         </div>
+        <ToastContainer/>
       </div>
     </>
   );

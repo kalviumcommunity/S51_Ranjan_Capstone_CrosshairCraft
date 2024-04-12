@@ -8,6 +8,7 @@ const LoginRouter = express.Router()
 const crosshairRouter = express.Router()
 const updatecrosshair = express.Router()
 const deletecrosshair = express.Router()
+const googleRouter = express.Router()
 
 signUpRouter.post("/signuppage",async (req, res) =>{
     try{
@@ -113,4 +114,24 @@ deletecrosshair.delete('/delete/:id', async (req, res) => {
 
 })
 
-module.exports = {signUpRouter, LoginRouter,crosshairRouter,updatecrosshair,deletecrosshair}
+// Googlelogin
+
+googleRouter.post("/googlelogin",async (req, res) =>{
+    try{
+        const {name, username, email} = req.body
+        if(!name ||  !email ){
+            return res.status(400).json({Message: "Please enter all fields"})
+        }
+        let user = await User.findOne({email})
+
+        // const salt = await bcrypt.genSalt(10)
+        // const hashedPassword = await bcrypt.hash(password, salt)
+
+        let newUser = await User.create({name, username, email})
+        return res.status(200).json({User: newUser})
+    } catch(err){
+        return res.status(500).json({success: false, message: err.message,});
+    }
+})
+
+module.exports = {signUpRouter, LoginRouter,crosshairRouter,updatecrosshair,deletecrosshair,googleRouter}
