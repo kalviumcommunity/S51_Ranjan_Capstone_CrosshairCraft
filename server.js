@@ -2,7 +2,7 @@ const express = require('express');
 const {startDatabase,isConnected} = require( './db' );
 const User = require('./models/user.model')
 require('dotenv').config()
-const {signUpRouter, LoginRouter, crosshairRouter, updatecrosshair , deletecrosshair} = require('./Routes/routes')
+const {signUpRouter, LoginRouter, crosshairRouter, updatecrosshair , deletecrosshair,googleRouter} = require('./Routes/routes')
 const cors  = require( 'cors' )
 // const passport = require('passport')
 // const session = require('express-session')
@@ -21,6 +21,7 @@ app.use('/',LoginRouter)
 app.use('/',crosshairRouter)
 app.use('/',updatecrosshair)
 app.use('/',deletecrosshair)
+app.use('/',googleRouter)
 
 
 
