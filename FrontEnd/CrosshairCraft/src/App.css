@@ -283,18 +283,27 @@
 
 
 
-/* NavBar */ 
+/* NavBar */
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:black;
+  background-color: black;
   padding: 10px;
   z-index: 1000;
   width: 100%;
-  position:fixed;
+  position: fixed;
   top: 0;
+}
+
+.search-bar {
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
 }
 
 .navbar a {
@@ -304,8 +313,11 @@
 }
 
 .navbar h1 {
-  margin-left: 5px;
+  margin: 0; 
   color: white;
+  flex-grow: 1; /* Take up remaining space */
+  text-align: center; /* Center the text */
+  margin-left: 150px;
 }
 
 .left-content {
@@ -317,6 +329,7 @@
   display: flex;
   align-items: center;
 }
+
 
 
 /* Logout */
@@ -389,12 +402,6 @@
 .Btn:active {
   transform: translate(2px ,2px);
 }
-
-
-
-
-
-
 
 /* Login button */
 .btn-2 {

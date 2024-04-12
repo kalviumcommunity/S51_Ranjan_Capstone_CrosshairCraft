@@ -2,39 +2,41 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 import "./../App.css";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     checkLoginStatus();
   }, []);
+
   const checkLoginStatus = () => {
     const token = getCookie("token");
     setIsLoggedIn(!!token);
   };
+
   const handleLogout = () => {
     document.cookie = "token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     setIsLoggedIn(false);
     window.location.reload();
   };
+
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(";").shift();
   };
+
   return (
     <nav>
       <div className="navbar">
         <div className="left-content">
-          
           <a href="/">Home</a>
           <Link to="/about">About Us</Link>
-          
         </div>
         <h1>Crosshair Craft</h1>
         <div className="right-content">
-         
+          <input type="text" placeholder="Type to search" className="search-bar" />
           {isLoggedIn ? (
             <button className="Btn">
               <div className="sign">
@@ -51,7 +53,7 @@ function NavBar() {
             <>
               <a href="/loginpage" className="btn-2">
                 <div>LOGIN</div>
-                <svg
+                {/* <svg
                   fill="none"
                   viewBox="0 0 24 24"
                   height="25px"
@@ -59,34 +61,31 @@ function NavBar() {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linejoin="round"
-                    stroke-linecap="round"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeLinejoin="round"
+                    strokeLinecap="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                     stroke="white"
                     d="M11.6801 14.62L14.2401 12.06L11.6801 9.5"
                   ></path>
                   <path
-                    stroke-linejoin="round"
-                    stroke-linecap="round"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeLinejoin="round"
+                    strokeLinecap="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                     stroke="white"
                     d="M4 12.0601H14.17"
                   ></path>
                   <path
-                    stroke-linejoin="round"
-                    stroke-linecap="round"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeLinejoin="round"
+                    strokeLinecap="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                     stroke="white"
                     d="M12 4C16.42 4 20 7 20 12C20 17 16.42 20 12 20"
                   ></path>
-                </svg>
+                </svg> */}
               </a>
-              
-
-              
             </>
           )}
         </div>
