@@ -52,7 +52,7 @@ function Login() {
       console.error("Error logging in:", error);
       setError("Invalid username or password");
     }
-  };
+  };-
 
   function setCookie(name, value, expiresInDays) {
     const date = new Date();
