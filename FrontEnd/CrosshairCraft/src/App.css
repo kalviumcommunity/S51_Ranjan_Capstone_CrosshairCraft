@@ -75,6 +75,159 @@
   align-items: center;
 }
 
+/* Home Page */
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 100px; /* Adjusted margin for better alignment */
+}
+
+.Home h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.Home p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.features {
+  margin: 50px auto;
+  max-width: 800px;
+}
+
+.features p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.features ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.features a {
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.features a:hover {
+  background-color: #0056b3;
+}
+
+.benefits {
+  margin: 50px auto;
+  max-width: 800px;
+}
+
+.benefits ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.benefits ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.benefits a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.benefits a:hover {
+  color: #0056b3;
+}
+
+.sign-up-link,
+.log-in-link {
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin: 0 5px;
+}
+
+.sign-up-link:hover,
+.log-in-link:hover {
+  background-color: #0056b3;
+}
+
+button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #c82333;
+}
+
+.testimonial {
+  margin: 50px auto;
+  max-width: 800px;
+}
+
+.testimonial h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.testimonial-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+    
+}
+
+.testimonial-card p {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ontheway {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+
+
+
+
 /* Login Page */
 
 .login-page {
