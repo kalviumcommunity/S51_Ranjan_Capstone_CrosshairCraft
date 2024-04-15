@@ -31,7 +31,7 @@ function NavBar() {
     <nav>
       <div className="navbar">
         <div className="left-content">
-          <a href="/">Home</a>
+          <a href="/home">Home</a>
           <Link to="/about">About Us</Link>
         </div>
         <h1>Crosshair Craft</h1>
