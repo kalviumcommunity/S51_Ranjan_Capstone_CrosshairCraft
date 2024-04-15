@@ -785,22 +785,19 @@ header {
   font-size: 24px;
 }
 
+
+
+nav h2 {
+  margin-right: 550px;
+}
 nav {
-  text-align: center;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+   text-align: center;
 }
 
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-nav ul li a {
+nav a  {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
@@ -809,9 +806,7 @@ nav ul li a {
   transition: background-color 0.3s ease;
 }
 
-nav ul li a:hover {
-  background-color: #555;
-}
+
 
 /* Hero Section Styles */
 .hero {
@@ -832,6 +827,8 @@ nav ul li a:hover {
   font-size: 20px;
   margin-bottom: 40px;
 }
+
+
 
 .cta-button {
   display: inline-block;
