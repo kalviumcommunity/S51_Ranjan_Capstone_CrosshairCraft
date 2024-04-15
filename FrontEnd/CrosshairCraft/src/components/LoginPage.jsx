@@ -81,7 +81,7 @@ function Login() {
       console.error('Error logging in:', error);
 
     }
-    navigate('/')
+    navigate('/home')
     
 }
 

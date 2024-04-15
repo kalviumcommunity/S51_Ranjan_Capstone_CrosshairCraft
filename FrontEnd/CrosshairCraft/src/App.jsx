@@ -4,6 +4,7 @@ import './App.css'
 import LoginPage from './components/LoginPage'
 import Home from './components/Home'
 import NewData from "./components/NewData";
+import LandingPage from './components/LandingPage'
 import Update from "./components/Update";
 import SignupPage from './components/SignupPage'
 import AboutUs from './components/AboutUs'
@@ -17,7 +18,8 @@ function App() {
         <BrowserRouter>
         
           <Routes>
-            <Route path='/' element={<Home/>} />
+          <Route path='/' element={<LandingPage/>} />
+            <Route path='/home' element={<Home/>} />
             <Route path='/loginpage' element={<LoginPage/>} />
             <Route path='/signuppage' element={<SignupPage/>} /> 
             <Route path="/newdata" element={<NewData />}></Route>
