@@ -32,9 +32,7 @@ function LandingPage() {
       <section className="hero">
         <h1>Enhance Your Aim with Crosshair Craft</h1>
         <p>Discover the Perfect Crosshair for Your Favorite FPS Games.</p>
-        <a href="#preset-crosshairs" className="cta-button">
-          Explore Preset Crosshairs
-        </a>
+        <Link className="cta-button" to='/preset'>Explore Preset Crosshairs</Link>
       </section>
 
       <section id="preset-crosshairs" className="features">
