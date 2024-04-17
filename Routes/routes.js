@@ -9,6 +9,7 @@ const crosshairRouter = express.Router()
 const updatecrosshair = express.Router()
 const deletecrosshair = express.Router()
 const googleRouter = express.Router()
+const presetRouter = express.Router()
 
 signUpRouter.post("/signuppage",async (req, res) =>{
     try{
@@ -134,4 +135,16 @@ googleRouter.post("/googlelogin",async (req, res) =>{
     }
 })
 
-module.exports = {signUpRouter, LoginRouter,crosshairRouter,updatecrosshair,deletecrosshair,googleRouter}
+presetRouter.get('/preset',async (req, res)=>{
+    try{
+        const preset  =  await crosshair.find()
+        res.status(200).send(preset)
+        
+
+    }catch(e){
+        res.status(400).send("Error")
+        
+    }
+})
+
+module.exports = {signUpRouter, LoginRouter,crosshairRouter,updatecrosshair,deletecrosshair,googleRouter,presetRouter}
