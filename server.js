@@ -2,14 +2,8 @@ const express = require('express');
 const {startDatabase,isConnected} = require( './db' );
 const User = require('./models/user.model')
 require('dotenv').config()
-const {signUpRouter, LoginRouter, crosshairRouter, updatecrosshair , deletecrosshair,googleRouter,presetRouter} = require('./Routes/routes')
+const {signUpRouter, LoginRouter, crosshairRouter, updatecrosshair , deletecrosshair,googleRouter,presetRouter,feedbackRouter} = require('./Routes/routes')
 const cors  = require( 'cors' )
-// const passport = require('passport')
-// const session = require('express-session')
-// const GoogleStrategy = require('passport-google-oauth20').Strategy;
-
-
-
 
 const app = express();
 const port = 3000;
@@ -23,6 +17,8 @@ app.use('/',crosshairRouter)
 app.use('/',updatecrosshair)
 app.use('/',deletecrosshair)
 app.use('/',googleRouter)
+app.use('/',feedbackRouter)
+
 
 
 
