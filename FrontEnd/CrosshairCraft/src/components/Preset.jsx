@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import '../App.css'
+import "../App.css";
+import NavBar from "./NavBar";
 
 function Preset() {
   const [presets, setPresets] = useState([]);
@@ -14,7 +15,7 @@ function Preset() {
         "https://s51-ranjan-capstone-crosshaircraft.onrender.com/preset"
       );
       const data = await response.json();
-      setPresets(data); 
+      setPresets(data);
     } catch (e) {
       console.log(e);
     }
@@ -22,14 +23,17 @@ function Preset() {
 
   return (
     <>
-      {presets.map((preset) => (
-        <div key={preset.id}>
-          <h1>{preset.Game}</h1>
-          <h2>{preset.Color}</h2>
-          <h3>{preset.Type}</h3>
-          <h3>{preset.CreatedB}</h3>
-        </div>
-      ))}
+      <NavBar />
+      <div className="preset-grid">
+        {presets.map((preset) => (
+          <div className="preset-item" key={preset.id}>
+            <h1>{preset.Game}</h1>
+            <h2>{preset.Color}</h2>
+            <h3>{preset.Type}</h3>
+            <h3>{preset.CreatedB}</h3>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
