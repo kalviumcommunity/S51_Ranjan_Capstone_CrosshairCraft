@@ -12,7 +12,7 @@ function Preset() {
   const fetchPreset = async () => {
     try {
       const response = await fetch(
-        "https://s51-ranjan-capstone-crosshaircraft.onrender.com/preset"
+        "http://localhost:3000/preset"
       );
       const data = await response.json();
       setPresets(data);

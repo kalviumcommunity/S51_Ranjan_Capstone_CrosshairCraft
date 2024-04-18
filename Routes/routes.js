@@ -1,6 +1,7 @@
 const express = require('express')
 const User = require('../models/user.model')
 const crosshair = require('../models/Crosshair.model')
+const feedback = require('../models/Feedback.model')
 const bcrypt = require('bcrypt')
 
 const signUpRouter = express.Router()
@@ -10,6 +11,7 @@ const updatecrosshair = express.Router()
 const deletecrosshair = express.Router()
 const googleRouter = express.Router()
 const presetRouter = express.Router()
+const feedbackRouter = express.Router()
 
 signUpRouter.post("/signuppage",async (req, res) =>{
     try{
@@ -147,4 +149,32 @@ presetRouter.get('/preset',async (req, res)=>{
     }
 })
 
-module.exports = {signUpRouter, LoginRouter,crosshairRouter,updatecrosshair,deletecrosshair,googleRouter,presetRouter}
+feedbackRouter.get('/feedback',async (req, res)=>{
+    try{
+        const preset  =  await feedback.find()
+        res.status(200).send(preset)
+        
+
+    }catch(e){
+        res.status(400).send("Error")
+        
+    }
+})
+
+feedbackRouter.post("/feedbackpost",async (req, res) =>{
+    try{
+        const {feedback,name} = req.body
+        if(!feedback ||  !name ){
+            return res.status(400).json({Message: "Please enter all fields"})
+        }
+        
+
+        let newFeedback = await feedback.create({feedback,name})
+        return res.status(200).json({feedback: newFeedback})
+    } catch(err){
+        return res.status(500).json({success: false, message: err.message,});
+    }
+})
+
+
+module.exports = {signUpRouter, LoginRouter,crosshairRouter,updatecrosshair,deletecrosshair,googleRouter,presetRouter,feedbackRouter}
