@@ -9,11 +9,12 @@ import Update from "./components/Update";
 import SignupPage from './components/SignupPage'
 import AboutUs from './components/AboutUs'
 import Preset from './components/Preset'
+import Feedback from './components/Feedback'
 
 function App() {
    return (
     <>
-      {/* <br /> */}
+      
       
        <div>
         <BrowserRouter>
@@ -27,6 +28,7 @@ function App() {
             <Route path="/update/:id" element={<Update />}></Route>
             <Route path='/about' element={<AboutUs/>}></Route>
             <Route path='/preset' element={<Preset/>} ></Route>
+            <Route path='/feed' element={<Feedback/>} ></Route>
           </Routes>
         </BrowserRouter>
       </div>
