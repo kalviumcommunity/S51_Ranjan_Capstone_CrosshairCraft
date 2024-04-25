@@ -85,7 +85,7 @@ function Feedback() {
       <div className="feedback-container">
         {/* Feedback Form */}
         <form onSubmit={handleSubmit} className="feedback-form">
-          <h3>Submit Feedback</h3>
+          <h3>Submit Feedback</h3><br />
           <div className="form-group">
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" name="name" value={feedbackForm.name} onChange={handleInputChange} required />
