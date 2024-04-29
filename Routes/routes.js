@@ -13,6 +13,7 @@ const googleRouter = express.Router()
 const presetRouter = express.Router()
 const feedbackRouter = express.Router()
 
+
 signUpRouter.post("/signuppage",async (req, res) =>{
     try{
         const {name, username, email, password} = req.body
@@ -117,8 +118,9 @@ deletecrosshair.delete('/delete/:id', async (req, res) => {
 
 })
 
-// Googlelogin
 
+
+// Googlelogin
 googleRouter.post("/googlelogin",async (req, res) =>{
     try{
         const {name, username, email} = req.body
@@ -175,6 +177,9 @@ feedbackRouter.post("/feedbackpost",async (req, res) =>{
         return res.status(500).json({success: false, message: err.message,});
     }
 })
+
+
+
 
 
 module.exports = {signUpRouter, LoginRouter,crosshairRouter,updatecrosshair,deletecrosshair,googleRouter,presetRouter,feedbackRouter}

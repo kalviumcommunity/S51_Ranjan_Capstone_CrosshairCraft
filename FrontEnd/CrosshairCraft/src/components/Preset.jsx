@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {Link} from 'react-router-dom'
 import "../App.css";
 import NavBar from "./NavBar";
 
@@ -21,6 +22,7 @@ function Preset() {
     }
   };
 
+
   return (
     <>
       <NavBar />
@@ -33,6 +35,7 @@ function Preset() {
             <h3>{preset.CreatedB}</h3>
           </div>
         ))}
+        <Link to='/adding'><button>Add</button></Link>
       </div>
     </>
   );

@@ -10,6 +10,7 @@ import SignupPage from './components/SignupPage'
 import AboutUs from './components/AboutUs'
 import Preset from './components/Preset'
 import Feedback from './components/Feedback'
+import Addcrosshair from './components/Addcrosshair'
 
 function App() {
    return (
@@ -29,6 +30,7 @@ function App() {
             <Route path='/about' element={<AboutUs/>}></Route>
             <Route path='/preset' element={<Preset/>} ></Route>
             <Route path='/feed' element={<Feedback/>} ></Route>
+            <Route path='/adding' element={<Addcrosshair/>} ></Route>
           </Routes>
         </BrowserRouter>
       </div>
