@@ -3,6 +3,8 @@ const User = require('../models/user.model')
 const crosshair = require('../models/Crosshair.model')
 const feedback = require('../models/Feedback.model')
 const bcrypt = require('bcrypt')
+const nodemailer    = require('nodemailer')
+require('dotenv').config()
 
 const signUpRouter = express.Router()
 const LoginRouter = express.Router()
@@ -29,11 +31,61 @@ signUpRouter.post("/signuppage",async (req, res) =>{
         const hashedPassword = await bcrypt.hash(password, salt)
 
         let newUser = await User.create({name, username, email, password: hashedPassword})
+        await sendVerificationEmail(newUser.email,newUser.verified)
+
         return res.status(200).json({User: newUser})
     } catch(err){
         return res.status(500).json({success: false, message: err.message,});
     }
 })
+
+
+async function sendVerificationEmail(email, verified) {
+    try {
+        // Create transporter using nodemailer
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD,
+            },
+        });
+
+     
+        const url = "http://localhost:5173/verification"
+
+        const mailOptions = {
+            from: "ranjan.m1325@gmail.com",
+            to: email,
+            subject: "Account Verification",
+            html: `
+        <p>Please click the following button to verify your email address:</p>
+        <a href="${url}"  target="_parent" style="background-color: #4CAF50; color: white; padding: 15px 25px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 10px;">Verify Email</a>
+    `,
+        };
+
+        // Send email
+        await transporter.sendMail(mailOptions);
+    } catch (error) {
+        console.error("Error sending verification email:", error);
+        // Handle error appropriately
+    }
+}
+
+presetRouter.get("/verification", async (req, res) => {
+    try {
+        const user = await User.findOneAndUpdate({ verified: false }, { verified: true }, { new: true });
+
+        if (!user) {
+            return res.status(404).send({ message: "User not found" });
+        }
+
+        res.status(200).send({ message: "Email verified successfully" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: "Internal Server Error" });
+    }
+});
 
 
 LoginRouter.post('/loginpage',async (req, res) => {
@@ -177,6 +229,8 @@ feedbackRouter.post("/feedbackpost",async (req, res) =>{
         return res.status(500).json({success: false, message: err.message,});
     }
 })
+
+
 
 
 

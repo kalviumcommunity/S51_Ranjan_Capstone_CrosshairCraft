@@ -11,6 +11,8 @@ import AboutUs from './components/AboutUs'
 import Preset from './components/Preset'
 import Feedback from './components/Feedback'
 import Addcrosshair from './components/Addcrosshair'
+import Waiting from './components/Waiting'
+import Verification from './components/Verification'
 
 function App() {
    return (
@@ -31,6 +33,8 @@ function App() {
             <Route path='/preset' element={<Preset/>} ></Route>
             <Route path='/feed' element={<Feedback/>} ></Route>
             <Route path='/adding' element={<Addcrosshair/>} ></Route>
+            <Route path='/waiting' element={<Waiting/>} ></Route>
+            <Route path='/verification' element={<Verification/>} ></Route>
           </Routes>
         </BrowserRouter>
       </div>
