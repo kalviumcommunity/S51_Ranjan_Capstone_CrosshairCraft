@@ -32,7 +32,7 @@ function Signup() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://s51-ranjan-capstone-crosshaircraft.onrender.com/signuppage",
+        "http://localhost:3000/signuppage",
         {
           name,
           username,
@@ -42,7 +42,7 @@ function Signup() {
       );
       if (response.status === 200) {
         alert("Signup successful! Please login.");
-        navigate("/loginpage");
+        navigate("/waiting");
       }
     } catch (error) {
       console.error("Error signing up:", error);
