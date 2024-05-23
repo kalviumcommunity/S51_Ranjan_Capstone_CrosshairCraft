@@ -1012,3 +1012,32 @@ button:hover {
   height: 300px;
   overflow-y: scroll;
 }
+
+
+
+/* Verification  */
+
+#ver{
+  background-color:#ffcd39 ;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+
+}
+
+#ver h1{
+  padding-bottom: 10px;
+}
+
+#verfybtn{
+  background-color: gray;
+  
+}
+
+#verfybtn:hover{
+  background-color: black;
+  
+}
