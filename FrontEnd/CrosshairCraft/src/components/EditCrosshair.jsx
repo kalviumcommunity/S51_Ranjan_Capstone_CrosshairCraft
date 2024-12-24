@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "./NavBar";
 import "../App.css";
 
-function Addcrosshair() {
+function EditCrosshair() {
   const [formdata, setFormData] = useState({
     CrosshairID: "",
     Color: "",
@@ -16,6 +16,7 @@ function Addcrosshair() {
   const [error, setError] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
+  const { id } = useParams();  // Get the id from the URL params
 
   useEffect(() => {
     // Check if user is logged in by validating token
@@ -30,9 +31,34 @@ function Addcrosshair() {
     } else {
       setIsAuthenticated(true);
     }
-  }, [navigate]);
 
-  const handlechange = (event) => {
+    // Fetch the crosshair details to populate the form for editing
+    if (id) {
+      fetchCrosshairDetails(id);
+    }
+  }, [id, navigate]);
+
+  const fetchCrosshairDetails = async (id) => {
+    try {
+      const token = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("token="))
+        ?.split("=")[1];
+
+      const response = await axios.get(`http://localhost:3000/preset/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Send token for authentication
+        },
+      });
+
+      setFormData(response.data); // Pre-fill form with fetched data
+    } catch (error) {
+      console.error("Error fetching crosshair details:", error);
+      setError("Error fetching data. Please try again later.");
+    }
+  };
+
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
       ...formdata,
@@ -40,7 +66,7 @@ function Addcrosshair() {
     });
   };
 
-  const handlesubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
@@ -53,8 +79,8 @@ function Addcrosshair() {
         throw new Error("Unauthorized access. Please log in.");
       }
 
-      const response = await axios.post(
-        "http://localhost:3000/add",
+      const response = await axios.put(
+        `http://localhost:3000/preset/${id}`,
         formdata,
         {
           headers: {
@@ -64,20 +90,12 @@ function Addcrosshair() {
         }
       );
 
-      if (response.status === 201) {
-        setFormData({
-          CrosshairID: "",
-          Color: "",
-          Type: "",
-          Game: "",
-          CreatedBy: "",
-        });
-        setError("");
-        alert("Crosshair added successfully!");
-        window.location.reload();
+      if (response.status === 200) {
+        alert("Crosshair updated successfully!");
+        navigate(`/preset/${id}`); // Redirect to the updated crosshair details page or any other page
       }
     } catch (error) {
-      console.error("Error adding crosshair:", error);
+      console.error("Error updating crosshair:", error);
       setError(
         error.response?.data?.message ||
           "Something went wrong. Please try again later."
@@ -90,10 +108,10 @@ function Addcrosshair() {
       <NavBar />
       {isAuthenticated && (
         <div className="form-container">
-          <h2>Add Crosshair</h2>
+          <h2>Edit Crosshair</h2>
           <br />
           {error && <div className="error-message">{error}</div>}
-          <form onSubmit={handlesubmit}>
+          <form onSubmit={handleSubmit}>
             <div className="input-field">
               <label htmlFor="crosshair-id">ID</label>
               <input
@@ -101,8 +119,9 @@ function Addcrosshair() {
                 id="crosshair-id"
                 name="CrosshairID"
                 value={formdata.CrosshairID}
-                onChange={handlechange}
+                onChange={handleChange}
                 required
+                disabled // ID cannot be edited
               />
             </div>
             <div className="input-field">
@@ -112,7 +131,7 @@ function Addcrosshair() {
                 id="color"
                 name="Color"
                 value={formdata.Color}
-                onChange={handlechange}
+                onChange={handleChange}
                 required
               />
             </div>
@@ -123,7 +142,7 @@ function Addcrosshair() {
                 id="type"
                 name="Type"
                 value={formdata.Type}
-                onChange={handlechange}
+                onChange={handleChange}
                 required
               />
             </div>
@@ -134,7 +153,7 @@ function Addcrosshair() {
                 id="game"
                 name="Game"
                 value={formdata.Game}
-                onChange={handlechange}
+                onChange={handleChange}
                 required
               />
             </div>
@@ -145,7 +164,7 @@ function Addcrosshair() {
                 id="created-by"
                 name="CreatedBy"
                 value={formdata.CreatedBy}
-                onChange={handlechange}
+                onChange={handleChange}
                 required
               />
             </div>
@@ -159,4 +178,4 @@ function Addcrosshair() {
   );
 }
 
-export default Addcrosshair;
+export default EditCrosshair;

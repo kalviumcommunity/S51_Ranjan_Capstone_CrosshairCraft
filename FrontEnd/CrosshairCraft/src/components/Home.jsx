@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { PulseLoader } from "react-spinners";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import Preset from "./Preset"; // Importing the Preset component
 import "./../App.css";
 
 function Home() {
@@ -100,13 +100,17 @@ function Home() {
           <br />
         </ul>
         <br />
-
-        <ul></ul>
       </div>
 
-      <div className="ontheway">
-        <PulseLoader />
-      </div>
+      {/* Conditionally render the Preset component */}
+      {isLoggedIn ? (
+        <Preset /> // Render the Preset component if logged in
+      ) : (
+        <div className="ontheway">
+          <p>Please log in to view the crosshairs.</p>
+        </div>
+      )}
+
       <Footer />
     </>
   );

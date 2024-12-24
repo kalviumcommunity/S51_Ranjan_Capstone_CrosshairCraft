@@ -1,17 +1,30 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const CrosshairSchema = new mongoose.Schema({
-    CrosshairID: { type: Number },
-    Color: { type: String },
-    Type : {type : String},
-    Game : {type : String },
-    CreatedBy : {type : String}
+// Define the Crosshair schema
+const crosshairSchema = new mongoose.Schema({
+  CrosshairID: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  Color: {
+    type: String,
+    required: true,
+  },
+  Type: {
+    type: String,
+    required: true,
+  },
+  Game: {
+    type: String,
+    required: true,
+  },
+  CreatedBy: {
+    type: String,
+    required: true,
+  },
+});
 
-},
-);
-
-
-
-
-
-module.exports = mongoose.model("crosshairs", CrosshairSchema);
+// Create and export the model
+const crosshair = mongoose.model('Crosshair', crosshairSchema);
+module.exports = { crosshair };
