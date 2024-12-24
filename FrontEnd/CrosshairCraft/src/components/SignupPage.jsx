@@ -12,41 +12,39 @@ function Signup() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+  const handleInputChange = (setter) => (e) => {
+    setter(e.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(""); // Reset error state
     try {
-      const response = await axios.post(
-        "http://localhost:3000/signuppage",
-        {
-          name,
-          username,
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("http://localhost:3000/signuppage", {
+        name: name.trim(),
+        username: username.trim(),
+        email: email.trim(),
+        password: password.trim(),
+      });
+
       if (response.status === 200) {
         alert("Signup successful! Please login.");
         navigate("/waiting");
       }
     } catch (error) {
-      console.error("Error signing up:", error);
-      setError("Something went wrong!");
+      if (error.response) {
+        // Server responded with a status other than 2xx
+        console.error("Error response:", error.response.data);
+        setError(error.response.data.message || "Invalid input data!");
+      } else if (error.request) {
+        // Request made but no response received
+        console.error("Error request:", error.request);
+        setError("No response from server. Please try again later.");
+      } else {
+        // Other errors
+        console.error("Error message:", error.message);
+        setError("An unexpected error occurred. Please try again.");
+      }
     }
   };
 
@@ -69,7 +67,7 @@ function Signup() {
                   className="inputText"
                   id="name"
                   value={name}
-                  onChange={handleNameChange}
+                  onChange={handleInputChange(setName)}
                   required
                 />
               </div>
@@ -82,7 +80,7 @@ function Signup() {
                   className="inputText"
                   id="username"
                   value={username}
-                  onChange={handleUsernameChange}
+                  onChange={handleInputChange(setUsername)}
                   required
                 />
               </div>
@@ -95,7 +93,7 @@ function Signup() {
                   className="inputText"
                   id="email"
                   value={email}
-                  onChange={handleEmailChange}
+                  onChange={handleInputChange(setEmail)}
                   required
                 />
               </div>
@@ -108,7 +106,7 @@ function Signup() {
                   className="inputText"
                   id="password"
                   value={password}
-                  onChange={handlePasswordChange}
+                  onChange={handleInputChange(setPassword)}
                   required
                 />
               </div>

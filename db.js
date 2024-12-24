@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-require('dotenv').config()
-
+require('dotenv').config();
 
 const startDatabase = async () => {
   try {
-    await mongoose.connect(process.env.DATABASE_URI);
+    // Connect to MongoDB without deprecated options
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log('📦 connected to MongoDB');
   } catch (err) {
     console.error('❌ error connecting to MongoDB:', err.message);
@@ -22,6 +22,6 @@ const stopDatabase = async () => {
 
 const isConnected = () => {
   return mongoose.connection.readyState === 1;
-}
+};
 
 module.exports = { startDatabase, stopDatabase, isConnected };
